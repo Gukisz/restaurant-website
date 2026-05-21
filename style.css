@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap');
+
 /* Reset e Variáveis */
 :root {
   --gold: #c8a97e;
@@ -5,6 +7,14 @@
   --light: #f8f8f8;
   --gray: #555555;
   --transition: all 0.3s ease;
+  --shadow-sm: 0 2px 20px rgba(0,0,0,0.05);
+  --shadow-md: 0 5px 20px rgba(0,0,0,0.05);
+  --shadow-lg: 0 15px 30px rgba(0,0,0,0.1);
+  --radius: 5px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 * {
@@ -12,8 +22,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap');
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -106,8 +114,8 @@ nav {
   height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-              url('images/interior.jpg') no-repeat center center/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), 
+              url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920') no-repeat center center/cover;
   color: white;
   padding-top: 100px;
 }
@@ -160,6 +168,7 @@ nav {
 .btn:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 /* Seção Destaques */
@@ -198,25 +207,26 @@ nav {
   flex: 1 1 300px;
   max-width: 350px;
   background-color: white;
-  border-radius: 5px;
+  border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
   transition: var(--transition);
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .card img {
   width: 100%;
   height: 220px;
   object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
-.card-content {
-  padding: 25px;
+.card:hover img {
+  transform: scale(1.08);
 }
 
 .card h3 {
@@ -224,11 +234,13 @@ nav {
   font-size: 1.5rem;
   margin-bottom: 10px;
   font-weight: 600;
+  padding: 0 25px;
 }
 
 .card p {
   color: var(--gray);
   font-size: 0.95rem;
+  padding: 0 25px 25px;
 }
 
 /* Seção Sobre Elegante */
@@ -245,8 +257,7 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('images/texture.png') repeat;
-  opacity: 0.03;
+  background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px);
   pointer-events: none;
 }
 
@@ -254,6 +265,9 @@ nav {
   display: flex;
   align-items: center;
   gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .sobre-text {
@@ -296,6 +310,18 @@ nav {
   color: var(--gray);
   font-size: 1.1rem;
   line-height: 1.8;
+}
+
+/* Seção Mapa */
+.footer-map {
+  background-color: var(--dark);
+  padding: 0;
+}
+
+.footer-map iframe {
+  width: 100%;
+  height: 300px;
+  display: block;
 }
 
 /* Footer Minimalista */
@@ -374,6 +400,225 @@ footer {
   font-size: 0.9rem;
 }
 
+/* Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Botão Dourado */
+.btn-gold {
+  background-color: var(--gold);
+  border-color: var(--gold);
+  color: white;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-gold:hover {
+  background-color: #b8946a;
+  border-color: #b8946a;
+  color: white;
+}
+
+/* Botão Flutuante Reserva */
+.float-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--gold);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 999;
+  box-shadow: 0 4px 15px rgba(200, 169, 126, 0.4);
+  transition: var(--transition);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.float-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(200, 169, 126, 0.5);
+  color: white;
+}
+
+.float-btn i {
+  font-size: 1.2rem;
+}
+
+/* Botão Voltar ao Topo */
+.back-to-top {
+  position: fixed;
+  bottom: 90px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  background-color: var(--dark);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: var(--gold);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Página de Reservas */
+.reserva-hero {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+              url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920') no-repeat center center/cover;
+  color: white;
+  padding: 100px 20px 0;
+}
+
+.reserva-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.reserva-hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  font-weight: 300;
+}
+
+.reserva-section {
+  padding: 100px 0;
+}
+
+.reserva-content {
+  display: flex;
+  gap: 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.reserva-info {
+  flex: 1;
+  background-color: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  align-self: flex-start;
+}
+
+.reserva-info h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+.reserva-info h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background-color: var(--gold);
+}
+
+.reserva-info p {
+  margin-bottom: 15px;
+  color: var(--gray);
+  font-size: 1rem;
+}
+
+.reserva-info i {
+  width: 25px;
+  color: var(--gold);
+  margin-right: 10px;
+}
+
+.reserva-form {
+  flex: 2;
+  background-color: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  background-color: #fafafa;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(200, 169, 126, 0.15);
+  background-color: white;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
 /* Responsividade */
 @media (max-width: 1024px) {
   .hero h1 {
@@ -386,6 +631,14 @@ footer {
   
   .sobre-image img {
     height: 400px;
+  }
+
+  .reserva-content {
+    gap: 40px;
+  }
+
+  .reserva-hero h1 {
+    font-size: 3.2rem;
   }
 }
 
@@ -431,6 +684,38 @@ footer {
   .section-title {
     font-size: 2.3rem;
   }
+
+  .reserva-content {
+    flex-direction: column;
+  }
+
+  .reserva-hero {
+    height: 40vh;
+  }
+
+  .reserva-hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .float-btn span {
+    display: none;
+  }
+
+  .float-btn {
+    padding: 15px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .back-to-top {
+    bottom: 75px;
+    right: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -449,5 +734,26 @@ footer {
   .footer-container {
     flex-direction: column;
     gap: 30px;
+  }
+
+  .reserva-hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .reserva-info,
+  .reserva-form {
+    padding: 25px;
+  }
+
+  .float-btn {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .back-to-top {
+    bottom: 70px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
   }
 }

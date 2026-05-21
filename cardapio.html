@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardápio | Bistrô Elegance</title>
-    <link rel="shortcut icon" href="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Frestaurant-icon-png%2Frestaurant-icon-png-0.jpg&f=1&nofb=1&ipt=4bee6848a8c9fa920f0104cf9074b090c40cfec910490c9848702f0eebda1f49" type="image/x-icon">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1046/1046855.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="cardapio.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Frestaurant-icon-png%2Frestaurant-icon-png-0.jpg&f=1&nofb=1&ipt=4bee6848a8c9fa920f0104cf9074b090c40cfec910490c9848702f0eebda1f49" alt="Bistrô Elegance">
+                <img src="https://cdn-icons-png.flaticon.com/512/1046/1046855.png" alt="Bistrô Elegance">
             </div>
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="cardapio.html" class="active">Cardápio</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="reservas.html">Reservas</a></li>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
                 </ul>
                 <div class="burger">
                     <i class="fas fa-bars"></i>
@@ -156,5 +157,41 @@
             <p>&copy; 2023 Bistrô Elegance. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <a href="reservas.html" class="float-btn" title="Faça uma reserva">
+        <i class="fas fa-calendar-check"></i>
+        <span>Reserva</span>
+    </a>
+
+    <a href="#" class="back-to-top" id="backToTop" title="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+        });
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('show', window.scrollY > 300);
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.menu-section, .chef-section, footer').forEach(el => {
+            el.classList.add('reveal');
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>

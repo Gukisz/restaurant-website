@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bistrô Elegance | Home</title>
-    <link rel="shortcut icon" href="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Frestaurant-icon-png%2Frestaurant-icon-png-0.jpg&f=1&nofb=1&ipt=4bee6848a8c9fa920f0104cf9074b090c40cfec910490c9848702f0eebda1f49" type="image/x-icon">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1046/1046855.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Frestaurant-icon-png%2Frestaurant-icon-png-0.jpg&f=1&nofb=1&ipt=4bee6848a8c9fa920f0104cf9074b090c40cfec910490c9848702f0eebda1f49" alt="Bistrô Elegance">
+                <img src="https://cdn-icons-png.flaticon.com/512/1046/1046855.png" alt="Bistrô Elegance">
             </div>
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="cardapio.html">Cardápio</a></li>
+                    <li><a href="reservas.html">Reservas</a></li>
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
@@ -41,17 +42,17 @@
             <h2>Nossos Destaques</h2>
             <div class="cards-container">
                 <div class="card">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20230906%2Fourlarge%2Fpngtree-risotto-italian-food-png-image_9997710.png&f=1&nofb=1&ipt=900b94e8427bc0d19950548492f171499c10ce7d523f65895c78f8f629a8db1a" alt="Prato 1">
+                    <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=600" alt="Prato 1">
                     <h3>Risoto de Trufas</h3>
                     <p>Arroz arbóreo com trufas negras frescas e queijo parmesão.</p>
                 </div>
                 <div class="card">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F021%2F217%2F697%2Foriginal%2Ffilet-mignon-in-wine-sauce-png.png&f=1&nofb=1&ipt=95c6dd0607b37cd603805959fde620a85fdd53079bf4af1d74e43dfc2b2e8a50" alt="Prato 2">
+                    <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600" alt="Prato 2">
                     <h3>Filé Mignon</h3>
                     <p>Corte nobre grelhado, acompanhado de purê de batata trufado.</p>
                 </div>
                 <div class="card">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fe7.pngegg.com%2Fpngimages%2F551%2F219%2Fpng-clipart-chocolate-truffle-mousse-flourless-chocolate-cake-chocolate-food-frozen-dessert.png&f=1&nofb=1&ipt=b497991134d4e42c9c3d72eebdcfe6205c64277dfe6f7f6ed563105c440b0ae2" alt="Prato 3">
+                    <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600" alt="Prato 3">
                     <h3>Sobremesa do Chef</h3>
                     <p>Mousse de chocolate belga com framboesas frescas.</p>
                 </div>
@@ -94,18 +95,49 @@
                 </div>
             </div>
         </div>
+        <div class="footer-map">
+            <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-46.6545%2C-23.5615%2C-46.6515%2C-23.5595&amp;layer=mapnik&amp;marker=-23.5605%2C-46.6530" title="Mapa do Bistrô Elegance" loading="lazy"></iframe>
+        </div>
         <div class="copyright">
             <p>&copy; 2023 Bistrô Elegance. Todos os direitos reservados.</p>
         </div>
     </footer>
 
+    <a href="reservas.html" class="float-btn" title="Faça uma reserva">
+        <i class="fas fa-calendar-check"></i>
+        <span>Reserva</span>
+    </a>
+
+    <a href="#" class="back-to-top" id="backToTop" title="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
     <script>
-        // Menu mobile
         const burger = document.querySelector('.burger');
         const nav = document.querySelector('.nav-links');
         
         burger.addEventListener('click', () => {
             nav.classList.toggle('nav-active');
+        });
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('show', window.scrollY > 300);
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.destaques, .sobre, footer').forEach(el => {
+            el.classList.add('reveal');
+            observer.observe(el);
         });
     </script>
 </body>
